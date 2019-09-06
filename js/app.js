@@ -177,11 +177,15 @@ var vue = new Vue({
 
 function fetchRates()
 {
-    fetch('http://apilayer.net/api/live?access_key=4327ea63f6d109ed76bb4bdd23e25e3b')
+    let uri = 'https://cors-anywhere.herokuapp.com/' +
+     'http://apilayer.net/api/live?access_key=4327ea63f6d109ed76bb4bdd23e25e3b'
+    fetch(uri)
         .then( res => res.json() )
         .then( res => {
             let timestamp = res.timestamp;
             let rates = {};
+
+            console.log(res)
 
             for(let cur in res.quotes)
             {
